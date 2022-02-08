@@ -65,7 +65,14 @@ public class Policy
   }
 
 
-
+  public void setHolder(String firstName, String lastName, 
+                        int age, String smokeStatus)
+  {
+    holderFirstName = firstName;
+    holderLastName = lastName;
+    holderAge = age;
+    holderSmoker = smokeStatus;
+  }
 
   public void setPolicyNum(int num)
   {
@@ -93,7 +100,6 @@ public class Policy
     return providerName;
   }
   
-
 
   public void setHolderName(String firstName, String lastName)
   {
@@ -150,7 +156,7 @@ public class Policy
   }
 
 
-  public void setAttributes(double height, double weight)
+  public void setHolderAttributes(double height, double weight)
   {
     holderHeight = height;
     holderWeight = weight;
@@ -168,9 +174,10 @@ public class Policy
 
 
 
+
   public double getBMI()
   {
-    return (holderWeight * 703.00) / (holderHeight * holderHeight);
+    return ((holderWeight * 703.00) / (holderHeight * holderHeight));
   }
 
   public double getPolicyCost(double bmi)

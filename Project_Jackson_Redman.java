@@ -25,21 +25,17 @@ public class Project_Jackson_Redman
         firstName = keyboard.nextLine();
         System.out.print("\nPlease enter the Policyholder's Last Name: ");
         lastName = keyboard.nextLine();
-        policy.setHolderName(firstName, lastName);
-
         System.out.print("\nPlease enter the policyholder's Age: ");
         age = Integer.parseInt(keyboard.nextLine());
-        policy.setHolderAge(age);
-
         System.out.print("\nPlease enter the Policyholder's Smoking Status (smoker / non-smoker): ");
         smokingStatus = keyboard.nextLine();
-        policy.setSmokingStatus(smokingStatus);
+        policy.setHolder(firstName, lastName, age, smokingStatus);
 
         System.out.print("\nPlease enter the Policyholder's Height (in inches): ");
         height = Double.parseDouble(keyboard.nextLine());
         System.out.print("\nPlease enter the Policyholder's Weight (in pounds): ");
         weight = Double.parseDouble(keyboard.nextLine());
-        policy.setAttributes(height, weight);
+        policy.setHolderAttributes(height, weight);
 
         keyboard.close();
 
