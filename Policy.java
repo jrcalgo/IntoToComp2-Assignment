@@ -196,7 +196,7 @@ public class Policy
     return total;
   }
 
-  public void dataOutput(double bmi, double price) 
+  public void dataOutput(Policy p) 
   {
     System.out.println("\n+=+=+=+=+ Current Policy Holder Data Output +=+=+=+=+");
     System.out.println("Policy Number: " + policyNum);
@@ -207,8 +207,8 @@ public class Policy
     System.out.println("Policyholder's Smoking Status: " + holderSmoker);
     System.out.printf("Policyholder's Height: %.1f inches\n", holderHeight);
     System.out.printf("Policyholder's Weight: %.1f pounds\n", holderWeight);
-    System.out.printf("Policyholder's BMI: %.2f\n", bmi);
-    System.out.printf("Policy Price: $%.2f\n", price);
+    System.out.printf("Policyholder's BMI: %.2f\n", p.getBMI());
+    System.out.printf("Policy Price: $%.2f\n", p.getPolicyCost(p.getBMI()));
 
   }
 }

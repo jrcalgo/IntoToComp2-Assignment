@@ -8,7 +8,6 @@ public class Project_Jackson_Redman
         String provider, firstName, lastName, smokingStatus;
         int policyNum, age;
         double height, weight;
-        double bmi;
 
         Scanner keyboard = new Scanner(System.in);
         Policy policy = new Policy();
@@ -39,8 +38,7 @@ public class Project_Jackson_Redman
 
         keyboard.close();
 
-        bmi = policy.getBMI();
-        policy.dataOutput(bmi, policy.getPolicyCost(bmi));
+        policy.dataOutput(policy);
 
         System.exit(0);
 
