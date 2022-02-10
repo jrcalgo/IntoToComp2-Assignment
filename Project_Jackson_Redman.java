@@ -1,4 +1,4 @@
-import Policy;
+
 import java.util.Scanner;
 
 public class Project_Jackson_Redman
