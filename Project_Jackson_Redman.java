@@ -1,9 +1,10 @@
 import Policy;
 import java.util.Scanner;
+import java.io.*;
 
 public class Project_Jackson_Redman
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
         String provider, firstName, lastName, smokingStatus;
         int policyNum, age;
@@ -38,7 +39,7 @@ public class Project_Jackson_Redman
 
         keyboard.close();
 
-        policy.dataOutput(policy);
+        policy.dataOutput();
 
         System.exit(0);
 
