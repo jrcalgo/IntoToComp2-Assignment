@@ -211,11 +211,20 @@ public class Policy
 
   /**
    * 
-   * @param age age of policy holder
+   * @param age age of policy holder as integer
    */
   public void setHolderAge(int age)
   {
     holderAge = age;
+  }
+
+  /**
+   * 
+   * @param age age of policy holder as String
+   */
+  public void setHolderAge(String age)
+  {
+    holderAge = Integer.parseInt(age);
   }
 
   /**
@@ -293,7 +302,7 @@ public class Policy
    * @param bmi calculated BMI
    * @return cost of policy
    */
-  public double getPolicyCost(double bmi)
+  public double getPolicyCost()
   {
     double total = 600.00;
 
@@ -303,8 +312,8 @@ public class Policy
     if (holderSmoker.contentEquals("smoker"))
       total += 100;
 
-    if (bmi > 35.00)
-      total += (bmi - 35.00) * 20.00;
+    if (getBMI() > 35.00)
+      total += (getBMI() - 35.00) * 20.00;
 
     return total;
   }
@@ -325,7 +334,7 @@ public class Policy
     System.out.printf("Policyholder's Height: %.1f inches\n", holderHeight);
     System.out.printf("Policyholder's Weight: %.1f pounds\n", holderWeight);
     System.out.printf("Policyholder's BMI: %.2f\n", getBMI());
-    System.out.printf("Policy Price: $%.2f\n", getPolicyCost(getBMI()));
+    System.out.printf("Policy Price: $%.2f\n", getPolicyCost());
 
   }
 }

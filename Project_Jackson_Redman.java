@@ -1,4 +1,4 @@
-import Policy;
+
 import java.util.Scanner;
 import java.io.*;
 
@@ -6,42 +6,77 @@ public class Project_Jackson_Redman
 {
     public static void main(String[] args) throws IOException
     {
-        String provider, firstName, lastName, smokingStatus;
-        int policyNum, age;
-        double height, weight;
+        // file name in directory
+        String fileName = "PolicyInformation.txt";
 
-        Scanner keyboard = new Scanner(System.in);
-        Policy policy = new Policy();
+        // sets amount of policies to process based off line count
+        final int POLICY_VARS = 8;
+        int policyCount = getLineCount(fileName) / POLICY_VARS;
 
-        System.out.print("Please enter the Policy Number: ");
-        policyNum = Integer.parseInt(keyboard.nextLine());
-        policy.setPolicyNum(policyNum);
+        // processes and outputs data 
+        outputFileData(fileName, policyCount);
 
-        System.out.print("\nPlease enter the Provider Name: ");
-        provider = keyboard.nextLine();
-        policy.setProvider(provider);
+        // end program
+        System.exit(0); 
 
-        System.out.print("\nPlease enter the Policyholder's First Name: ");
-        firstName = keyboard.nextLine();
-        System.out.print("\nPlease enter the Policyholder's Last Name: ");
-        lastName = keyboard.nextLine();
-        System.out.print("\nPlease enter the policyholder's Age: ");
-        age = Integer.parseInt(keyboard.nextLine());
-        System.out.print("\nPlease enter the Policyholder's Smoking Status (smoker / non-smoker): ");
-        smokingStatus = keyboard.nextLine();
-        policy.setHolder(firstName, lastName, age, smokingStatus);
+    }
 
-        System.out.print("\nPlease enter the Policyholder's Height (in inches): ");
-        height = Double.parseDouble(keyboard.nextLine());
-        System.out.print("\nPlease enter the Policyholder's Weight (in pounds): ");
-        weight = Double.parseDouble(keyboard.nextLine());
-        policy.setHolderAttributes(height, weight);
 
-        keyboard.close();
+    public static int getLineCount(String fileName) throws IOException
+    {
 
-        policy.dataOutput();
+        LineNumberReader readLines = new LineNumberReader(new FileReader(fileName));
+        int lineCount = 0;
 
-        System.exit(0);
+        try 
+        { // count number of lines
+            while (readLines.readLine() != null) // ignore blank lines
+            {
+                lineCount++; // iterate number of lines
+            }
+        } 
+        catch (IOException e) 
+        {
+            System.out.println("Error. Problem reading file.");
+        }
 
+        readLines.close();
+
+        return lineCount;
+    }
+
+    public static void outputFileData(String fileName, int dataEntries) throws IOException
+    {
+        int policyNum;
+        String provider;
+        String firstName;
+        String lastName;
+        int age;
+        String smokingStatus;
+        double height;
+        double weight;
+
+        Scanner readFile = new Scanner(new File(fileName));
+
+        Policy[] policy = new Policy[dataEntries];
+
+        try 
+        {
+            for (int i = 0; i < policy.length; i++)
+            {
+                while (readFile.hasNext())
+                {
+                    policy[i].setPolicyNum(readFile.nextLine());
+                    policy[i].setProvider(readFile.nextLine());
+                }
+                System.out.println("This woks.");
+            }
+        } 
+        catch (Exception e)
+        {
+            System.out.println("Error. Problem reading file.");
+        }
+        
+        readFile.close();
     }
 }
