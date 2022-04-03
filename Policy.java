@@ -324,7 +324,7 @@ public class Policy
    */
   public void dataOutput() 
   {
-    System.out.println("\n+=+=+=+=+ " + holderFirstName + "'s Policy Data Output +=+=+=+=+");
+    System.out.println("\n+=+=+=+=+ " + holderFirstName + "'s Policy Data +=+=+=+=+");
     System.out.println("Policy Number: " + policyNum);
     System.out.println("Provider Name: " + providerName);
     System.out.println("Policyholder's First Name: " + holderFirstName);
