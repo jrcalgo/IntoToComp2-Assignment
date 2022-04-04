@@ -52,15 +52,14 @@ public class Project_Jackson_Redman2
             
             policies.add(new Policy(policyNum, provider, firstName, lastName, age, smokingStatus, height, weight));
 
+            if (policy.holder.getSmokingStatus().equalsIgnoreCase("smoker"))
+                numSmokers = numSmokers++;
+
         }
 
         for (Policy policy : policies)
-        {
-            policy.dataOutput();
+            policy.toString();
 
-            if (policy.getSmokingStatus().equalsIgnoreCase("smoker"))
-                numSmokers = numSmokers++;
-        }
 
         System.out.println("\n\nThe total number of policies with a smoker is: " + numSmokers);
         System.out.println("The total number of policies with a non-smoker is: " + (policies.size() - numSmokers) );
