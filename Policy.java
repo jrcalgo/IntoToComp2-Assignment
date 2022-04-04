@@ -88,6 +88,7 @@ public class Policy
   }
 
 
+
   /**
    * 
    * @param num number of policy as integer
@@ -138,15 +139,6 @@ public class Policy
 
   /**
    * 
-   * @return calculated BMI
-   */
-  public double getBMI()
-  {
-    return ((holderWeight * 703.00) / (holderHeight * holderHeight));
-  }
-
-  /**
-   * 
    * @param bmi calculated BMI
    * @return cost of policy
    */
@@ -170,19 +162,11 @@ public class Policy
    * 
    * @return output of all collected data
    */
-  public void dataOutput() 
+  public String toString() 
   {
-    System.out.println("\n+=+=+=+=+ " + holderFirstName + "'s Policy Data Output +=+=+=+=+");
-    System.out.println("Policy Number: " + policyNum);
-    System.out.println("Provider Name: " + providerName);
-    System.out.println("Policyholder's First Name: " + holderFirstName);
-    System.out.println("Policyholder's Last Name: " + holderLastName);
-    System.out.println("Policyholder's Age: " + holderAge);
-    System.out.println("Policyholder's Smoking Status: " + holderSmoker);
-    System.out.printf("Policyholder's Height: %.1f inches\n", holderHeight);
-    System.out.printf("Policyholder's Weight: %.1f pounds\n", holderWeight);
-    System.out.printf("Policyholder's BMI: %.2f\n", getBMI());
-    System.out.printf("Policy Price: $%.2f\n", getPolicyCost());
+    String str = "Policy Number: " + policyNum + "Provider Name: " + providerName;
 
+    return str;
   }
+
 }
