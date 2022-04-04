@@ -7,7 +7,7 @@ public class Policy
   private int policyNum;
   private String providerName;
 
-  private PolicyHolder holder;
+  public PolicyHolder holder;
 
 
   // constructors below
