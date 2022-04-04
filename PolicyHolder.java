@@ -38,8 +38,8 @@ public class PolicyHolder
     */
     public void setHolderName(String firstName, String lastName)
     {
-    holderFirstName = firstName;
-    holderLastName = lastName;
+        holderFirstName = firstName;
+        holderLastName = lastName;
     }
 
     /**
@@ -48,7 +48,7 @@ public class PolicyHolder
      */
     public void setHolderFirstName(String firstName)
     {
-    holderFirstName = firstName;
+        holderFirstName = firstName;
     }
 
     /**
@@ -57,7 +57,7 @@ public class PolicyHolder
      */
     public void setHolderLastName(String lastName)
     {
-    holderLastName = lastName;
+        holderLastName = lastName;
     }
 
     /**
@@ -66,8 +66,8 @@ public class PolicyHolder
      */
     public String getHolderName()
     {
-    String name = holderFirstName + " " + holderLastName;
-    return name;
+        String name = holderFirstName + " " + holderLastName;
+        return name;
     }
 
     /**
@@ -76,7 +76,7 @@ public class PolicyHolder
      */
     public String getHolderLastName()
     {
-    return holderLastName;
+        return holderLastName;
     }
 
     /**
@@ -85,7 +85,7 @@ public class PolicyHolder
      */
     public String getHolderFirstName()
     {
-    return holderFirstName;
+        return holderFirstName;
     }
 
 
@@ -95,7 +95,7 @@ public class PolicyHolder
      */
     public void setHolderAge(int age)
     {
-    holderAge = age;
+        holderAge = age;
     }
 
     /**
@@ -104,7 +104,7 @@ public class PolicyHolder
      */
     public void setHolderAge(String age)
     {
-    holderAge = Integer.parseInt(age);
+        holderAge = Integer.parseInt(age);
     }
 
     /**
@@ -113,7 +113,7 @@ public class PolicyHolder
      */
     public int getHolderAge()
     {
-    return holderAge;
+        return holderAge;
     }
 
 
@@ -123,7 +123,7 @@ public class PolicyHolder
      */
     public void setSmokingStatus(String smokeStatus)
     {
-    holderSmoker = smokeStatus;
+        holderSmoker = smokeStatus;
     }
 
     /**
@@ -132,7 +132,7 @@ public class PolicyHolder
      */
     public String getSmokingStatus()
     {
-    return holderSmoker;
+        return holderSmoker;
     }
 
 
@@ -143,8 +143,8 @@ public class PolicyHolder
      */
     public void setHolderAttributes(double height, double weight)
     {
-    holderHeight = height;
-    holderWeight = weight;
+        holderHeight = height;
+        holderWeight = weight;
     }
 
     /**
@@ -153,7 +153,7 @@ public class PolicyHolder
      */
     public double getHeight()
     {
-    return holderHeight;
+        return holderHeight;
     }
 
     /**
@@ -162,7 +162,7 @@ public class PolicyHolder
      */
     public double getWeight()
     {
-    return holderWeight;
+        return holderWeight;
     }
 
     /**
@@ -171,10 +171,13 @@ public class PolicyHolder
      */
     public double getBMI()
     {
-    return ((holderWeight * 703.00) / (holderHeight * holderHeight));
+        return ((holderWeight * 703.00) / (holderHeight * holderHeight));
     }
 
-
+    /**
+     * 
+     * @return string output of all collected data
+     */
     public String toString()
     {
         String str = "Policyholder's First Name: " + holderFirstName +

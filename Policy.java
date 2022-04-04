@@ -1,29 +1,22 @@
 
 public class Policy
 { 
+  // count of policy objects
+  private static int policyCount;
   // fields
   private int policyNum;
   private String providerName;
 
-  private String holderFirstName;
-  private String holderLastName;
-  private int holderAge;
-  private String holderSmoker;
+  private PolicyHolder holder;
 
-  private double holderHeight;
-  private double holderWeight;
 
   // constructors below
   public Policy()
   {
     policyNum = 0000;
     providerName = "...";
-    holderFirstName = "...";
-    holderLastName = "...";
-    holderAge = 00;
-    holderSmoker = "non-smoker";
-    holderHeight = 0.00;
-    holderWeight = 0.00;
+    holder = new PolicyHolder();
+    policyCount++;
   }
 
   /**
@@ -35,33 +28,25 @@ public class Policy
   {
     policyNum = num;
     providerName = provider;
+    policyCount++;
   }
 
   /**
-   * 
+   * Sets holder object fields
    * @param firstName first name of policy holder
    * @param lastName last name of policy holder
    * @param age age of policy holder
    * @param smoker smoking status of policy holder
+   * @param height holder height
+   * @param weight holder weight
    */
-  public Policy(String firstName, String lastName, int age, String smoker)
+  public Policy(String firstName, String lastName, int age, String smoker, double height,
+                double weight)
   {
-    holderFirstName = firstName;
-    holderLastName = lastName;
-    holderAge = age;
-    holderSmoker = smoker;
+    holder = new PolicyHolder(firstName, lastName, age, smoker, height, weight);
+    policyCount++;
   }
 
-  /**
-   * 
-   * @param height height of policy holder
-   * @param weight weight of policy holder
-   */
-  public Policy(double height, double weight)
-  {
-    holderHeight = height;
-    holderWeight = weight;
-  }
 
   /**
    * 
@@ -79,15 +64,18 @@ public class Policy
   {
     policyNum = num;
     providerName = provider;
-    holderFirstName = firstName;
-    holderLastName = lastName;
-    holderAge = age;
-    holderSmoker = smokeStatus;
-    holderHeight = height;
-    holderWeight = weight;
+    holder = new PolicyHolder(firstName, lastName, age, smokeStatus, height, weight);
+    policyCount++;
   }
 
-
+  /**
+   * 
+   * @return count of policy objects
+   */
+  public int getCount()
+  {
+    return policyCount;
+  }
 
   /**
    * 
@@ -139,21 +127,20 @@ public class Policy
 
   /**
    * 
-   * @param bmi calculated BMI
    * @return cost of policy
    */
   public double getPolicyCost()
   {
     double total = 600.00;
 
-    if (holderAge > 50)
+    if (holder.getHolderAge() > 50)
       total += 75.00;
 
-    if (holderSmoker.contentEquals("smoker"))
+    if (holder.getSmokingStatus().contentEquals("smoker"))
       total += 100;
 
-    if (getBMI() > 35.00)
-      total += (getBMI() - 35.00) * 20.00;
+    if (holder.getBMI() > 35.00)
+      total += (holder.getBMI() - 35.00) * 20.00;
 
     return total;
   }
