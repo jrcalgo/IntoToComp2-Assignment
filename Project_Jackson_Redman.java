@@ -50,6 +50,10 @@ public class Project_Jackson_Redman
             if (inputFile.hasNext())
                 inputFile.nextLine();
             
+            if (smokingStatus.equalsIgnoreCase("smoker"))
+                numSmokers++;  
+            
+            
             policies.add(new Policy(policyNum, provider, firstName, lastName, age, smokingStatus, height, weight));
 
         }
@@ -57,9 +61,6 @@ public class Project_Jackson_Redman
         for (Policy policy : policies)
         {
             policy.dataOutput();
-
-            if (policy.getSmokingStatus().equalsIgnoreCase("smoker"))
-                numSmokers = numSmokers++;
         }
 
         System.out.println("\n\nThe total number of policies with a smoker is: " + numSmokers);
