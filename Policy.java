@@ -158,6 +158,15 @@ public class Policy
     return total;
   }
 
+  /**
+   * 
+   * @return output of all collected data
+   */
+  public String toString() 
+  {
+    String str = "Policy Number: " + policyNum + "Provider Name: " + providerName;
 
+    return str;
+  }
 
 }
