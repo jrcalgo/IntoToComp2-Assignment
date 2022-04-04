@@ -8,14 +8,15 @@ public class PolicyHolder
     private double holderHeight;
     private double holderWeight;
 
+
     public PolicyHolder() 
     {
         holderFirstName = "john";
         holderLastName = "doe";
         holderAge = 0;
         holderSmoker = "non-smoker";
-        holderHeight = 0;
-        holderWeight = 0;
+        holderHeight = 0.00;
+        holderWeight = 0.00;
     }
 
     public PolicyHolder(String firstName, String lastName, int age, String smokeStatus,
@@ -30,11 +31,11 @@ public class PolicyHolder
     }
 
 
-     /**
-     * 
-     * @param firstName first name of policy holder
-     * @param lastName last name of policy holder
-     */
+    /**
+    * 
+    * @param firstName first name of policy holder
+    * @param lastName last name of policy holder
+    */
     public void setHolderName(String firstName, String lastName)
     {
     holderFirstName = firstName;
@@ -163,6 +164,27 @@ public class PolicyHolder
     {
     return holderWeight;
     }
+    
+    /**
+     * 
+     * @return calculated BMI
+     */
+    public double getBMI()
+    {
+    return ((holderWeight * 703.00) / (holderHeight * holderHeight));
+    }
 
+
+    public String toString()
+    {
+        String str = "Policyholder's First Name: " + holderFirstName +
+                     "\nPolicyholder's Last Name: " + holderLastName +
+                     "\nPolicyholder's Age: " + holderAge +
+                     "\nPolicyholder's Smoking Status: " + holderSmoker +
+                     "\nPolicyholder's height: " + holderHeight +
+                     "\nPolicyholder's weight: " + holderWeight;
+
+        return str;
+    }
 
 }
