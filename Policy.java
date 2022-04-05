@@ -1,29 +1,22 @@
 
 public class Policy
 { 
+  // count of policy objects
+  private static int policyCount;
   // fields
   private int policyNum;
   private String providerName;
+  // policy holder object
+  private PolicyHolder holder;
 
-  private String holderFirstName;
-  private String holderLastName;
-  private int holderAge;
-  private String holderSmoker;
-
-  private double holderHeight;
-  private double holderWeight;
 
   // constructors below
   public Policy()
   {
     policyNum = 0000;
     providerName = "...";
-    holderFirstName = "...";
-    holderLastName = "...";
-    holderAge = 00;
-    holderSmoker = "non-smoker";
-    holderHeight = 0.00;
-    holderWeight = 0.00;
+    holder = new PolicyHolder();
+    policyCount++;
   }
 
   /**
@@ -35,33 +28,25 @@ public class Policy
   {
     policyNum = num;
     providerName = provider;
+    policyCount++;
   }
 
   /**
-   * 
+   * Sets holder object fields
    * @param firstName first name of policy holder
    * @param lastName last name of policy holder
    * @param age age of policy holder
    * @param smoker smoking status of policy holder
+   * @param height holder height
+   * @param weight holder weight
    */
-  public Policy(String firstName, String lastName, int age, String smoker)
+  public Policy(String firstName, String lastName, int age, String smoker, double height,
+                double weight)
   {
-    holderFirstName = firstName;
-    holderLastName = lastName;
-    holderAge = age;
-    holderSmoker = smoker;
+    holder = new PolicyHolder(firstName, lastName, age, smoker, height, weight);
+    policyCount++;
   }
 
-  /**
-   * 
-   * @param height height of policy holder
-   * @param weight weight of policy holder
-   */
-  public Policy(double height, double weight)
-  {
-    holderHeight = height;
-    holderWeight = weight;
-  }
 
   /**
    * 
@@ -79,30 +64,17 @@ public class Policy
   {
     policyNum = num;
     providerName = provider;
-    holderFirstName = firstName;
-    holderLastName = lastName;
-    holderAge = age;
-    holderSmoker = smokeStatus;
-    holderHeight = height;
-    holderWeight = weight;
+    holder = new PolicyHolder(firstName, lastName, age, smokeStatus, height, weight);
+    policyCount++;
   }
 
-
-  // setter-getters below 
   /**
    * 
-   * @param firstName first name of policy holder
-   * @param lastName last name of policy holder
-   * @param age age of policy holder 
-   * @param smokeStatus smoking status of policy holder
+   * @return count of policy objects
    */
-  public void setHolder(String firstName, String lastName, 
-                        int age, String smokeStatus)
+  public int getCount()
   {
-    holderFirstName = firstName;
-    holderLastName = lastName;
-    holderAge = age;
-    holderSmoker = smokeStatus;
+    return policyCount;
   }
 
   /**
@@ -150,170 +122,35 @@ public class Policy
     return providerName;
   }
   
+  // policyHolder class object method
 
   /**
    * 
-   * @param firstName first name of policy holder
-   * @param lastName last name of policy holder
+   * @return policyHolder BMI
    */
-  public void setHolderName(String firstName, String lastName)
+  public double getHolderBMI()
   {
-    holderFirstName = firstName;
-    holderLastName = lastName;
+    return holder.getBMI();
   }
-
-  /**
-   * 
-   * @param firstName first name of policy holder
-   */
-  public void setHolderFirstName(String firstName)
-  {
-    holderFirstName = firstName;
-  }
-  
-  /**
-   * 
-   * @param lastName last name of policy holder
-   */
-  public void setHolderLastName(String lastName)
-  {
-    holderLastName = lastName;
-  }
-
-  /**
-   * 
-   * @return outputs policy holder full name
-   */
-  public String getHolderName()
-  {
-    String name = holderFirstName + " " + holderLastName;
-    return name;
-  }
-
-  /**
-   * 
-   * @return outputs policy holder last name
-   */
-  public String getHolderLastName()
-  {
-    return holderLastName;
-  }
-
-  /**
-   * 
-   * @return outputs policy holder first name
-   */
-  public String getHolderFirstName()
-  {
-    return holderFirstName;
-  }
-
-
-  /**
-   * 
-   * @param age age of policy holder as integer
-   */
-  public void setHolderAge(int age)
-  {
-    holderAge = age;
-  }
-
-  /**
-   * 
-   * @param age age of policy holder as String
-   */
-  public void setHolderAge(String age)
-  {
-    holderAge = Integer.parseInt(age);
-  }
-
-  /**
-   * 
-   * @return outputs policy holder age
-   */
-  public int getHolderAge()
-  {
-    return holderAge;
-  }
-
-
-  /**
-   * 
-   * @param smokeStatus smoking status of policy holder
-   */
-  public void setSmokingStatus(String smokeStatus)
-  {
-    holderSmoker = smokeStatus;
-  }
-
-  /**
-   * 
-   * @return outputs smoking status of policy holder
-   */
-  public String getSmokingStatus()
-  {
-    return holderSmoker;
-  }
-
-
-  /**
-   * 
-   * @param height height of holder
-   * @param weight weight of holder
-   */
-  public void setHolderAttributes(double height, double weight)
-  {
-    holderHeight = height;
-    holderWeight = weight;
-  }
-
-  /**
-   * 
-   * @return outputs height
-   */
-  public double getHeight()
-  {
-    return holderHeight;
-  }
-
-  /**
-   * 
-   * @return outputs weight
-   */
-  public double getWeight()
-  {
-    return holderWeight;
-  }
-
 
   // calculation methods below
 
   /**
    * 
-   * @return calculated BMI
-   */
-  public double getBMI()
-  {
-    return ((holderWeight * 703.00) / (holderHeight * holderHeight));
-  }
-
-  /**
-   * 
-   * @param bmi calculated BMI
    * @return cost of policy
    */
   public double getPolicyCost()
   {
     double total = 600.00;
 
-    if (holderAge > 50)
+    if (holder.getHolderAge() > 50)
       total += 75.00;
 
-    if (holderSmoker.contentEquals("smoker"))
+    if (holder.getSmokingStatus().contentEquals("smoker"))
       total += 100;
 
-    if (getBMI() > 35.00)
-      total += (getBMI() - 35.00) * 20.00;
+    if (holder.getBMI() > 35.00)
+      total += (holder.getBMI() - 35.00) * 20.00;
 
     return total;
   }
@@ -322,19 +159,13 @@ public class Policy
    * 
    * @return output of all collected data
    */
-  public void dataOutput() 
+  public String toString() 
   {
-    System.out.println("\n+=+=+=+=+ " + holderFirstName + "'s Policy Data +=+=+=+=+");
-    System.out.println("Policy Number: " + policyNum);
-    System.out.println("Provider Name: " + providerName);
-    System.out.println("Policyholder's First Name: " + holderFirstName);
-    System.out.println("Policyholder's Last Name: " + holderLastName);
-    System.out.println("Policyholder's Age: " + holderAge);
-    System.out.println("Policyholder's Smoking Status: " + holderSmoker);
-    System.out.printf("Policyholder's Height: %.1f inches\n", holderHeight);
-    System.out.printf("Policyholder's Weight: %.1f pounds\n", holderWeight);
-    System.out.printf("Policyholder's BMI: %.2f\n", getBMI());
-    System.out.printf("Policy Price: $%.2f\n", getPolicyCost());
+    String str = "\n\n\n+=+=+=+=+ " + holder.getHolderFirstName() + "'s Data +=+=+=+=+" + 
+                 "\nPolicy Number: " + policyNum + "\nProvider Name: " + providerName +
+                 holder.toString() + "\nPolicy Price: " + String.format("$%.2f", getPolicyCost());
 
+    return str;
   }
+
 }
