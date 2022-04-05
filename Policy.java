@@ -152,7 +152,7 @@ public class Policy
   public String toString() 
   {
     String str = "Policy Number: " + policyNum + "\nProvider Name: " + providerName +
-                 holder.toString() + "\nPolicy Price: $" + getPolicyCost();
+                 holder.toString() + "\nPolicy Price: " + String.format("$%.2f", getPolicyCost());
 
     return str;
   }
