@@ -184,8 +184,8 @@ public class PolicyHolder
                      "\nPolicyholder's Last Name: " + holderLastName +
                      "\nPolicyholder's Age: " + holderAge +
                      "\nPolicyholder's Smoking Status: " + holderSmoker +
-                     "\nPolicyholder's height: " + holderHeight +
-                     "\nPolicyholder's weight: " + holderWeight +
+                     "\nPolicyholder's height: " + holderHeight + " inches" +
+                     "\nPolicyholder's weight: " + holderWeight + " pounds" +
                      "\nPolicyholder's BMI: " + String.format("%.2f", getBMI());
 
         return str;

@@ -6,8 +6,8 @@ public class Policy
   // fields
   private int policyNum;
   private String providerName;
-
-  public PolicyHolder holder;
+  // policy holder object
+  private PolicyHolder holder;
 
 
   // constructors below
@@ -122,6 +122,16 @@ public class Policy
     return providerName;
   }
   
+  // policyHolder class object method
+
+  /**
+   * 
+   * @return policyHolder BMI
+   */
+  public double getHolderBMI()
+  {
+    return holder.getBMI();
+  }
 
   // calculation methods below
 
@@ -151,7 +161,8 @@ public class Policy
    */
   public String toString() 
   {
-    String str = "Policy Number: " + policyNum + "\nProvider Name: " + providerName +
+    String str = "\n\n\n+=+=+=+=+ " + holder.getHolderFirstName() + "'s Data +=+=+=+=+" + 
+                 "\nPolicy Number: " + policyNum + "\nProvider Name: " + providerName +
                  holder.toString() + "\nPolicy Price: " + String.format("$%.2f", getPolicyCost());
 
     return str;

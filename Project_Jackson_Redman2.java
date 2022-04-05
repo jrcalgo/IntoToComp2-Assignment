@@ -61,8 +61,7 @@ public class Project_Jackson_Redman2
 
         for (Policy policy : policies)
         {
-            System.out.println("\n\n\n+=+=+=+=+ " + policy.holder.getHolderFirstName() + "'s Data +=+=+=+=+");
-            System.out.print(policy.toString());
+            System.out.print(policy);
         }
 
         System.out.println("\n\nThere were " + policyCount + " Policy objects created.");
