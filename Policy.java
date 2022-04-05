@@ -151,7 +151,8 @@ public class Policy
    */
   public String toString() 
   {
-    String str = "Policy Number: " + policyNum + "Provider Name: " + providerName;
+    String str = "Policy Number: " + policyNum + "\nProvider Name: " + providerName +
+                 holder.toString() + "\nPolicy Price: $" + getPolicyCost();
 
     return str;
   }
