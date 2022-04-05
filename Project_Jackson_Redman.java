@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-public class Project_Jackson_Redman 
+public class Project_Jackson_Redman
 {
     public static void main(String[] args) throws IOException, FileNotFoundException
     {
@@ -50,19 +50,22 @@ public class Project_Jackson_Redman
             if (inputFile.hasNext())
                 inputFile.nextLine();
             
+            if (smokingStatus.equalsIgnoreCase("smoker"))
+                numSmokers++;
+            
             policies.add(new Policy(policyNum, provider, firstName, lastName, age, smokingStatus, height, weight));
+
+
 
         }
 
         for (Policy policy : policies)
         {
-            policy.dataOutput();
-
-            if (policy.getSmokingStatus().equalsIgnoreCase("smoker"))
-                numSmokers = numSmokers++;
+            System.out.print(policy);
         }
 
-        System.out.println("\n\nThe total number of policies with a smoker is: " + numSmokers);
+        System.out.println("\n\nThere were " + policyCount + " Policy objects created.");
+        System.out.println("The total number of policies with a smoker is: " + numSmokers);
         System.out.println("The total number of policies with a non-smoker is: " + (policies.size() - numSmokers) );
 
     }
