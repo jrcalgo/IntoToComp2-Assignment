@@ -141,16 +141,24 @@ public class Policy
    */
   public double getPolicyCost()
   {
-    double total = 600.00;
+    final double BASE = 600;
+    final double FEE_AGE = 75;
+    final double FEE_SMOKING = 100;
+    final double FEE_BMI = 20;
 
-    if (holder.getHolderAge() > 50)
-      total += 75.00;
+    final int THRESHOLD_AGE = 50;
+    final int THRESHOLD_BMI = 35;
+
+    double total = BASE;
+
+    if (holder.getHolderAge() > THRESHOLD_AGE)
+      total += FEE_AGE;
 
     if (holder.getSmokingStatus().contentEquals("smoker"))
-      total += 100;
+      total += FEE_SMOKING;
 
-    if (holder.getBMI() > 35.00)
-      total += (holder.getBMI() - 35.00) * 20.00;
+    if (holder.getBMI() > THRESHOLD_BMI)
+      total += (holder.getBMI() - THRESHOLD_BMI) * FEE_BMI;
 
     return total;
   }

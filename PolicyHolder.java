@@ -165,6 +165,7 @@ public class PolicyHolder
         return holderWeight;
     }
 
+    public void setPolicyHolder(p)
     /**
      * 
      * @return calculated BMI
